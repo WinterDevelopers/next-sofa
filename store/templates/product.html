@@ -1,0 +1,254 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="no-display" id="added-to-cart">
+        {{product.name}} was added to your cart
+    </div>
+    <section id="product-app" class="product">
+        <div id="product-id" class="no-display">{{product.id}}</div>
+        <div id="loader-container" class="no-display">
+            <div id="loader" class="loader"></div>
+        </div>
+        <div class="product-img-container">
+            <img src="{{product.imageURL}}" alt="" class="product-images">
+            <img v-for="image in images" v-bind:src="[[image.image]]" alt="" class="no-display product-images">
+            <!-- <img src="{% static 'images/guest-chair.png' %}" alt="" class="no-display product-images">
+            <img src="{% static 'images/bed.png' %}" alt="" class="no-display product-images"> -->
+            <button class="nxt-img" onclick="change_image(1)">
+                <img src="{% static 'icons/right-arrow.svg' %}"></img>
+            </button>
+            <button class="prev-img" onclick="change_image(-1)">
+                <img src="{% static 'icons/right-arrow.svg' %}"></img>
+            </button>
+            <div class="bottom-indicators">
+                
+            </div>
+        </div>
+        <div class="no-display" id="product-info">
+            <div class="product-review">
+                <h5>
+                reviews[34]
+                </h5>
+                <img src="{% static 'icons/star.png' %}" alt="" class="review-star">
+                <img src="{% static 'icons/star.png' %}" alt="" class="review-star">
+                <img src="{% static 'icons/star.png' %}" alt="" class="review-star">
+                <img src="{% static 'icons/star.png' %}" alt="" class="review-star">
+                <div class="product-price">N [[product.price]]</div>
+            </div>
+            <h1> [[product.name]]</h1>
+            <p>
+                [[product.description]]
+            </p>
+            <div class="product-btns">
+                <div class="add-to-cart btn-shadow" @click="addToCart">
+                    <p>Add to cart</p>
+                    <object data="{% static 'icons/cart-light.svg' %}"></object>
+                </div>
+                <div class="call-to-order btn-shadow">
+                    <a href="tel:+2348187241462" style="color:white;display:flex;width: 100%;">
+                        <p>Call to enquire</p>
+                        <object data="{% static 'icons/call.svg' %}"></object>
+                    </a>
+                </div>
+                
+            </div>
+            <h6> <span>click here</span> to visit our physical showroom </h6>
+        </div>
+        <div class="skeleton-container">
+            <div class="skeleton skeleton-text"></div>
+            <div class=" skeleton skeleton-text"></div>
+            <div class=" skeleton skeleton-text"></div>
+            <div class=" skeleton skeleton-text"></div>
+            <div class=" skeleton skeleton-text"></div>
+          </div>
+    </section>
+    <div style="width:50%;height:0.05rem;background-color: rgb(15, 15, 15); position: relative;top:2.5rem; border-radius:0.3rem;margin:0rem auto;margin-bottom: 3rem;"></div>
+    <section class="product-reviews">
+        <h2>Customers Reviews</h2>
+    <div class="product-review-summary">
+        <div>
+            <div>
+                <img src="{% static 'icons/star.png' %}" alt="" class="review-star">
+                <img src="{% static 'icons/star.png' %}" alt="" class="review-star">
+                <img src="{% static 'icons/star.png' %}" alt="" class="review-star">
+                <img src="{% static 'icons/star.png' %}" alt="" class="review-star">
+            </div>
+            <p>4 out of 5</p>
+        </div>
+    </div>
+    <div class="product-reviews-container">
+        <div class="review-container">
+            <div>
+                <img src="{% static 'images/profile2.png' %}" alt="">
+                <div>
+                    <h6> Emmanuel</h6>
+                    <div>
+                        <object data="{% static 'icons/star.png' %}"></object>
+                        <object data="{% static 'icons/star.png' %}"></object>
+                        <object data="{% static 'icons/star.png' %}"></object>
+                        <object data="{% static 'icons/star.png' %}"></object>
+                    </div>
+                </div>
+                <time>21-05-2022</time>
+            </div>
+            <div class="review-container-body">
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. 
+                Dobus, fugiat corrupti. Reprehenderit debitis veritatis 
+                distinctio nulla molestias, 
+            </div>
+        </div>
+        <div class="review-container">
+            <div>
+                <img src="{% static 'images/profile1.png' %}" alt="">
+                <div>
+                    <h6>Chisom</h6>
+                    <div>
+                        <object data="{% static 'icons/star.png' %}"></object>
+                        <object data="{% static 'icons/star.png' %}"></object>
+                    </div>
+                </div>
+                <time>21-05-2022</time>
+            </div>
+            <div class="review-container-body">
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. 
+                Dobus, fugiat corrupti. Reprehenderit debitis veritatis 
+                distinctio nulla molestias, 
+            </div>
+        </div>
+       <!--  <div class="review-container">
+            <div>
+                <img src="{% static 'images/profile3.png' %}" alt="">
+                <div>
+                    <h6>Amaka</h6>
+                    <div>
+                        <object data="{% static 'icons/star.png' %}"></object>
+                        <object data="{% static 'icons/star.png' %}"></object>
+                        <object data="{% static 'icons/star.png' %}"></object>
+                        <object data="{% static 'icons/star.png' %}"></object>
+                        <object data="{% static 'icons/star.png' %}"></object>
+                    </div>
+                </div>
+                <time>21-05-2022</time>
+            </div>
+            <div class="review-container-body">
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. 
+                Dobus, fugiat corrupti. Reprehenderit debitis veritatis 
+                distinctio nulla molestias, 
+            </div>
+        </div> -->
+    </div>
+    <div class="view-more"> view more </div>
+    </section>
+    <section class="add-review">
+        <h3>Rate this product</h3>
+        <h6>Tell others what you think about this product</h6>
+        <form action="" >
+           <div class="review-form">
+                <input type="radio" name="rate" id="rating-btn5" data-rate-point5 hidden>
+                <label class="review-form-label" for="rating-btn5"><span class="review-form-span">Excellent</span></label>
+   
+                <input type="radio" name="rate" id="rating-btn4" data-rate-point4 hidden>
+                <label class="review-form-label" for="rating-btn4"><span class="review-form-span">Satisfied</span></label>
+   
+                <input type="radio" name="rate" id="rating-btn3" data-rate-point3 hidden>
+                <label class="review-form-label" for="rating-btn3"><span class="review-form-span">Good</span></label>
+   
+                <input type="radio" name="rate" id="rating-btn2" data-rate-point2 hidden>
+                <label class="review-form-label" for="rating-btn2"><span class="review-form-span">Not satisfied</span></label>
+   
+                <input type="radio" name="rate" id="rating-btn1" data-rate-point1 hidden>
+                <label class="review-form-label" for="rating-btn1"><span class="review-form-span">Disappointing</span></label>
+           </div>
+           <textarea class="rating-description" type="" name="" id="" placeholder="describe your experience on this product"></textarea>
+           <input class="submit-review btn-shadow" type="submit" value="Submit review">
+        </form>
+       <!--  <button id="ggg" >ggg</button>
+        <script>
+            let ggg = document.querySelector('#ggg')
+            ggg.addEventListener('click',()=>{
+                var mew = document.querySelector("input[name='rate']:checked")
+                console.log(mew)
+            })
+        </script> -->
+       </section>
+    <section class="our-product">
+        <h5>YOU MIGHT ALSO LIKE</h5>
+        <div class="product-item-container">
+            {% for i in others %}
+                <div>
+                    <a href="{{i.get_absolute_url}}">
+                        <div class="product-image">
+                        <img src="{{i.imageURL}}" alt="">
+                        </div>
+                        <h5>
+                            {{i.name}}
+                        </h5>
+                        <p>
+                            N {{i.price}}
+                        </p>
+                        <div class="product-review-star">
+                            <img src="{% static 'icons/star.png' %}" alt="">
+                            <img src="{% static 'icons/star.png' %}" alt="">
+                            <img src="{% static 'icons/star.png' %}" alt="">
+                            <img src="{% static 'icons/star.png' %}" alt="">
+                            <img src="{% static 'icons/star.png' %}" alt="">
+                        </div>
+                    </a>
+            </div>
+            {% endfor %}
+            
+            <div>
+                <div class="product-image">
+                    <img src="{% static 'images/guest-chair.png' %}" alt="">
+                </div>
+                <h5>
+                    Guest Chair
+                </h5>
+                <p>
+                    N 40,000
+                </p>
+                <div class="product-review-star">
+                    <img src="{% static 'icons/star.png' %}" alt="">
+                    <img src="{% static 'icons/star.png' %}" alt="">
+                    <img src="{% static 'icons/star.png' %}" alt="">
+                </div>
+            </div>
+            <div>
+                <div class="product-image">
+                    <img src="{% static 'images/guest-chair.png' %}" alt="">
+                </div>
+                <h5>
+                    Guest Chair
+                </h5>
+                <p>
+                    N 40,000
+                </p>
+                <div class="product-review-star">
+                    <img src="{% static 'icons/star.png' %}" alt="">
+                    <img src="{% static 'icons/star.png' %}" alt="">
+                    <img src="{% static 'icons/star.png' %}" alt="">
+                    <img src="{% static 'icons/star.png' %}" alt="">
+                </div>
+            </div>
+            <div>
+                <div class="product-image">
+                    <img src="{% static 'images/guest-chair.png' %}" alt="">
+                </div>
+                <h5>
+                    Guest Chair
+                </h5>
+                <p>
+                    N 40,000
+                </p>
+                <div class="product-review-star">
+                    <img src="{% static 'icons/star.png' %}" alt="">
+                    <img src="{% static 'icons/star.png' %}" alt="">
+                    <img src="{% static 'icons/star.png' %}" alt="">
+                    <img src="{% static 'icons/star.png' %}" alt="">
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <script src="{% static 'js/product.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,127 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load humanize %}
+{% block content %}
+
+<section class="category">
+    <div class="category-head">
+        <img src="{{collection.imageURL}}" alt="" class="category-img">
+        <div>
+            <span>
+                <h5>
+                Reviews[34]
+                </h5>
+                <img src="{% static 'icons/star.png' %}" alt="" class="review-star">
+                <img src="{% static 'icons/star.png' %}" alt="" class="review-star">
+                <img src="{% static 'icons/star.png' %}" alt="" class="review-star">
+                <img src="{% static 'icons/star.png' %}" alt="" class="review-star">
+            </span>
+            <h1>{{collection.name}} collections & design</h1>
+            <p>
+                {{collection.details}} 
+            </p>
+        </div>
+    </div>
+    <div style="width:20%;height:0.6rem;background-color: rgb(197, 197, 197); position: relative;top:2.5rem; border-radius:0.3rem;margin:0rem auto;margin-bottom: 3rem;"></div>
+</section>
+    <section class="our-product">
+        <div class="product-item-container">
+            {% for product in products %}
+            <div>
+                <a href="{{product.get_absolute_url}}">
+                    <div class="product-image">
+                        <img src="{{product.imageURL}}" alt="">
+                    </div>
+                    <h5>
+                        {{product.name}}
+                    </h5>
+                    <p>
+                        N {{product.price|intcomma}}
+                    </p>
+                    <div class="product-review-star">
+                        <img src="{% static 'icons/star.png' %}" alt="">
+                        <img src="{% static 'icons/star.png' %}" alt="">
+                        <img src="{% static 'icons/star.png' %}" alt="">
+                        <img src="{% static 'icons/star.png' %}" alt="">
+                    </div>
+                </a>
+                
+            </div>
+            {% endfor %}
+            <div>
+                <div class="product-image">
+                    <img src="{% static 'images/guest-chair.png' %}" alt="">
+                </div>
+                <h5>
+                    Guest Chair
+                </h5>
+                <p>
+                    N 40,000
+                </p>
+                <div class="product-review-star">
+                    <img src="{% static 'icons/star.png' %}" alt="">
+                    <img src="{% static 'icons/star.png' %}" alt="">
+                    <img src="{% static 'icons/star.png' %}" alt="">
+                    <img src="{% static 'icons/star.png' %}" alt="">
+                </div>
+            </div>
+            <div>
+                <div class="product-image">
+                    <img src="{% static 'images/guest-chair.png' %}" alt="">
+                </div>
+                <h5>
+                    Guest Chair
+                </h5>
+                <p>
+                    N 40,000
+                </p>
+                <div class="product-review-star">
+                    <img src="{% static 'icons/star.png' %}" alt="">
+                    <img src="{% static 'icons/star.png' %}" alt="">
+                    <img src="{% static 'icons/star.png' %}" alt="">
+                    <img src="{% static 'icons/star.png' %}" alt="">
+                </div>
+            </div>
+            <div>
+                <div class="product-image">
+                    <img src="{% static 'images/guest-chair.png' %}" alt="">
+                </div>
+                <h5>
+                    Guest Chair
+                </h5>
+                <p>
+                    N 40,000
+                </p>
+                <div class="product-review-star">
+                    <img src="{% static 'icons/star.png' %}" alt="">
+                    <img src="{% static 'icons/star.png' %}" alt="">
+                    <img src="{% static 'icons/star.png' %}" alt="">
+                    <img src="{% static 'icons/star.png' %}" alt="">
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <div class="pagnition">
+        {% if products.has_previous %}
+        <a href="?page={{products.previous_page_number}}" class="a" style="margin-right:4rem;">
+            <img src="{% static 'icons/right-arrow.svg' %}" alt="" style="rotate:180deg;">
+            <span>PREVIOUS</span>
+        </a>
+        {% endif %}
+        {% for i in products.paginator.page_range %}
+        {% if products.number == i %}
+        <div>{{i}}/{{paginate.num_pages}}</div>
+        {% endif %}
+        {% endfor %}
+        
+        {% if products.has_next %}
+        <a href="?page={{products.next_page_number}}" class="a" style="margin-left:4rem;">
+            <span>NEXT</span>
+            <img src="{% static 'icons/right-arrow.svg' %}" alt="">
+        </a>
+        {% endif %}
+    </div>
+
+
+{% endblock %}

@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/main.css'  %}">
+    <title>Document</title>
+</head>
+<body>
+    <section class="add-review">
+     <h3>Rate this product</h3>
+     <h6>Tell others what you think about this product</h6>
+     <form action="" >
+        <div class="review-form">
+             <input type="radio" name="rate" id="rating-btn5" data-rate-point5 hidden>
+             <label class="review-form-label" for="rating-btn5"><span class="review-form-span">Excellent</span></label>
+
+             <input type="radio" name="rate" id="rating-btn4" data-rate-point4 hidden>
+             <label class="review-form-label" for="rating-btn4"><span class="review-form-span">Satisfied</span></label>
+
+             <input type="radio" name="rate" id="rating-btn3" data-rate-point3 hidden>
+             <label class="review-form-label" for="rating-btn3"><span class="review-form-span">Good</span></label>
+
+             <input type="radio" name="rate" id="rating-btn2" data-rate-point2 hidden>
+             <label class="review-form-label" for="rating-btn2"><span class="review-form-span">Not satisfied</span></label>
+
+             <input type="radio" name="rate" id="rating-btn1" data-rate-point1 hidden>
+             <label class="review-form-label" for="rating-btn1"><span class="review-form-span">Disappointing</span></label>
+        </div>
+        <textarea class="rating-description" type="" name="" id="" placeholder="describe your experience on this product"></textarea>
+        <input class="submit-review btn-shadow" type="submit" value="Submit review">
+     </form>
+    </section>
+</body>
+</html>

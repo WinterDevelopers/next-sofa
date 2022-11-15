@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+link
+   <section class="shipping-page">
+    <div class="shipping-summary">
+        <div>
+            <h3>
+                Total:
+            </h3>
+            <h4 id="delivery-total">
+                N 0
+            </h4>
+        </div>
+        <div>
+            <div>
+                Items:
+            </div>
+            <div id="delivery-items">
+                1
+            </div>
+        </div>
+    </div>
+
+    <form action="" class="shipping-form" id="delivery-form">
+        <h2>Delivery Details</h2>
+        <div style="width:2rem;height:0.2rem;background-color: rgb(10, 10, 10); position: relative;top:-0.5rem; border-radius:0.1rem;margin-bottom: 3rem;"></div>
+
+        <label for="" >Email</label>
+        <br>
+        <input type="text" name="email" required>
+        
+        <label for="nnn">Name</label>
+        <br>
+        <input type="text" name="name"   required>
+
+        <label for="">Phone Number</label>
+        <br>
+        <input type="number" name="phone-number" required>
+
+        <label for="">Address</label>
+        <br>
+        <input type="text" name="address" required>
+
+        <input type="submit" value="Proceed Payment" class="" id="submit-delivery-details">
+        <div class="no-display" id="waiting-animation"></div>
+    </form>
+
+    <div class="no-display" id="make-payment">
+        <button class="btn-shadow" onclick="payWithPaystack()" >Make Payment</button>
+        <script src="https://js.paystack.co/v1/inline.js"></script> 
+    </div>
+    {{forms}}
+    <div id="delivery-total" style="display:none;">{{cart.get_total_cost}}</div>
+    <div id="paystack-pub-key" style="display:none;">{{cart.pub_key}}</div>
+   </section>
+   <script src="{% static 'js/delivery.js' %}"></script>
+{% endblock %}

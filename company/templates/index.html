@@ -1,0 +1,140 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load humanize %}
+    {% block content %}
+    <section class="header">
+        <div class="header-a">
+            <h1><span>next sofa</span> store for<br>everyone</h1>
+            <p>Home for all your interior funitures and designs. 
+                Come and experience the  joy of designing and 
+                funishing you home,office and hotels. Ranging 
+                from prices that works with your buget</p>
+        </div>
+        <div class="header-b">
+            <img src="{% static 'images/morden-chair.jpg' %}" alt="">
+            <div>
+                <h3>01</h3>
+                <span>Funiture store
+                    <object data="{% static 'icons/golden-arrow.svg' %}" type=""></object></span>
+            </div>
+        </div>
+    </section>
+    <div class="promt">
+        <div>
+            <span>
+                <object data="{% static 'icons/fast-delivery.svg' %}" type=""></object>
+                Fast delivery
+            </span>
+        </div>
+        <div>
+            <span>
+                <object data="{% static 'icons/secure-payment.svg' %}" type=""></object>
+                Secure payment
+            </span>
+        </div>
+        <div>
+            <span>
+                <object data="{% static 'icons/24-7-support.svg' %}" type=""></object>
+                24/7 support
+            </span>
+        </div>
+    </div>
+    <section class="collection">
+        <h3>Our Collection</h3>
+        <div style="width:2rem;height:0.3rem;background-color: white; position: relative;top:0.8rem; border-radius:0.1rem; margin:0rem auto;"></div>
+        <div>
+            <a href="/collection/bed-frame">
+                <div class="collection-img-2 btn-shadow">
+                    <img src="{% static 'images/bed.png' %}" alt="">
+                    <div>Bed frame</div>
+                </div>
+            </a>
+            
+            <a href="/collection/gaming-chair">
+                <div class="collection-img-1 btn-shadow">
+                <img src="{% static 'images/gaming-chair.png' %}" alt="">
+                <div>Gaming chair</div>
+                </div>
+            </a>
+            
+            <a href="/collection/office-chair">
+                <div class="collection-img-1 btn-shadow">
+                <img src="{% static 'images/office-chair.png' %}" alt="">
+                <div>Office chair</div>
+            </div>
+            </a>
+            
+            <a href="/collection/couch">
+                <div class="collection-img-1 btn-shadow">
+                <img src="{% static 'images/couch.png' %}" alt="">
+                <div>Couch</div>
+            </div>
+            </a>
+            
+            <a href="/collection/lamps">
+                <div class="collection-img-1 btn-shadow">
+                <img src="{% static 'images/lamp-holder.png' %}" alt="">
+                <div>Lamps</div>
+            </div>
+            </a>
+            
+            <a href="/collection/dinning-sets">
+                <div class="collection-img-2 btn-shadow">
+                <img src="{% static 'images/dining-table.png' %}" alt="">
+                <div>Dinning Set</div>
+            </div>
+            </a>
+            
+        </div>
+    </section>
+    <section class="our-product">
+        <h3>Our Products</h3>
+        <div style="width:2rem;height:0.2rem;background-color: rgb(10, 10, 10); position: relative;top:-0.5rem; border-radius:0.1rem;margin-bottom: 3rem;"></div>
+        <div class="product-item-container">
+            {% for product in featured_products %}
+            <div>
+                <a href="{{product.get_absolute_url}}">
+                    <div class="product-image">
+                    <img src="{{product.imageURL}}" alt="{{product.imageURL}}">
+                    </div>
+                    <h5>
+                        {{product}}
+                    </h5>
+                    <p>
+                        N {{product.price|intcomma}}
+                    </p>
+                    <div class="product-review-star">
+                        <img src="{% static 'icons/star.png' %}" alt="">
+                        <img src="{% static 'icons/star.png' %}" alt="">
+                        <img src="{% static 'icons/star.png' %}" alt="">
+                        <img src="{% static 'icons/star.png' %}" alt="">
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+
+    </section>
+    <div class="why-next-sofa">
+        <img src="{% static 'images/palour.jpg' %}" alt="">
+        <div>
+            <h2>WHY <span>NEXT SOFA</span></h2>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloribus, 
+                fugiat corrupti. Reprehenderit debitis veritatis distinctio nulla 
+                molestias, natus ab? Distinctio reprehenderit 
+                ut cumque hic vitae harum tempora doloremque! Provident, blanditiis?
+            </p>
+        </div>
+    </div>
+    <section class="subscribe">
+        <h4>Keep Updated & Get  unlimited Discounts</h4>
+        <p>subscribe to our newsletter and  get updates on new products and discounts</p>
+        <form action="" method="post" class="subscribe-form">
+            {% csrf_token %}
+            <input type="email" placeholder="youremail@email.com">
+            <input type="submit" value="" class="btn-shadow">
+            <object data="{% static 'icons/telegram.svg' %}" type=""></object>
+        </form>
+    </section>
+
+    {% endblock %}

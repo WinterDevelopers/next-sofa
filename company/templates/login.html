@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+   <section>
+    <form method='POST' class="sign-in-form">
+        {% csrf_token %}
+        <h2 style="text-align:center;">Sign up</h2>
+        
+        <label for="nnn">Username</label>
+        <br>
+        <input type="text" name="username">
+        <label for="">Password</label>
+        <br>
+        <input type="password" name="password">
+        
+        <input type="submit" value="Login" class="btn-shadow">
+        <div>
+            <div style="width:45%;height:1px;background-color:#868686; position: relative;border-radius:0.1rem;margin:auto 0rem;"></div>
+            <p>or</p>
+            <div style="width:45%;height:1px;background-color:#868686; position: relative;border-radius:0.1rem;margin:auto 0rem;"></div>
+        </div>
+        <button class="btn-shadow">Others</button>
+        <p>Already have an account <span>click here</span></p>
+    </form>
+   </section>
+{% endblock %}
