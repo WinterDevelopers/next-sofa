@@ -25,9 +25,9 @@ STATIC_DIR = BASE_DIR/'static'
 SECRET_KEY = 'django-insecure-+i9)9j^v60&%6h*3)qyya8!fl5qo_tva2@*%4!)fbx-v$m6p+j'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['159.223.17.3']
 
 
 # Application definition
@@ -85,12 +85,24 @@ WSGI_APPLICATION = 'next_sofa.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+if DEBUG:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
     }
-}
+else:
+    DATABASES =   {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'nextsofa',
+            'USER': 'nextsofa_admin',
+            'PASSWORD': 'Complexshit',
+            'HOST': 'localhost',
+            'PORT': '',
+            }   
+        }
 
 
 # Password validation
@@ -129,7 +141,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [STATIC_DIR,]
-
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 #media file settings
 MEDIA_URL = 'media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
