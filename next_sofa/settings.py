@@ -25,9 +25,9 @@ STATIC_DIR = BASE_DIR/'static'
 SECRET_KEY = 'django-insecure-+i9)9j^v60&%6h*3)qyya8!fl5qo_tva2@*%4!)fbx-v$m6p+j'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['159.223.17.3']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -59,6 +59,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'next_sofa.urls'
@@ -97,7 +98,7 @@ else:
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
             'NAME': 'nextsofa',
-            'USER': 'nextsofa_admin',
+            'USER': 'winter',
             'PASSWORD': 'Complexshit',
             'HOST': 'localhost',
             'PORT': '',
@@ -141,7 +142,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [STATIC_DIR,]
-STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 #media file settings
 MEDIA_URL = 'media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
