@@ -11,7 +11,8 @@ function deliveryData(){
     .then((response)=> response.json())
     .then((data)=>{
         document.querySelector('#delivery-items').innerHTML = data['total-items']
-        document.querySelector('#delivery-total').innerHTML = Intl.NumberFormat().format(data['total-cost']) 
+        document.querySelector('#delivery-total').innerHTML = Intl.NumberFormat().format(data['total-cost'])
+        the_total = data['total-cost']
     })
     .then((my_funcs)=>{
         //stop loading animation as data is gotten//
@@ -73,14 +74,11 @@ function payWithPaystack(){
     let name = document.querySelector('[name="name"]').value;
     let email = document.querySelector('[name="email"]').value;
     let phone = document.querySelector('[name="phone-number"]').value;
-    let amount = document.querySelector('#delivery-total').innerHTML;
-    let pub_key = document.querySelector('#paystack-pub-key').innerHTML;
-    console.log(amount)
-    //console.log(reference)
+    let pub_key = document.querySelector('#paystack-pub-key').innerHTML;  
     let handler = PaystackPop.setup({
     key: pub_key,
     email: email,
-    amount: 30000,
+    amount: the_total*100,
     currency: "NGN",
     ref: the_reference,
     metadata: {

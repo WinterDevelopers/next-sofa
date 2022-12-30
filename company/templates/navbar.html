@@ -1,0 +1,158 @@
+{% load static %}
+<div class="no-display" id="user">{{request.user}}</div>
+<nav class="navbar">
+    <div>
+        <div class="navbar-logo">
+            <img src="{% static 'icons/next-sofa-logo.png' %}" alt="">
+        </div>
+        <div class="navbar-options no-display-min">
+            <div>Home</div>
+            <div>Collection</div>
+            <div>Contact</div>
+            <div>Profile</div>
+        </div>
+    
+        <div class="navbar-cart">
+            <img src="{% static 'icons/cart.svg' %}" alt="">
+            <div class="cart-item" id="cart-item">0</div>
+        </div>
+        <div class="search-btn" id="search-btn">
+            <img class="no-display-min"  src="{% static 'icons/search-icon.svg' %}" alt="">
+            <img class="no-display-max" src="{% static 'icons/search-icon-black.svg' %}" alt="">
+        </div>
+        <div class="mobile-menu-btn no-display-max" id="mobile-menu-btn">
+            <img src="{% static 'icons/double-menu-icon.svg' %}" alt="">
+        </div>
+    </div>
+</nav>
+<div class="no-display" id="mobile-menu">
+    <div class="close-btn mobile-menu-close-btn btn-shadow" id="mobile-menu-close">
+        <img src="{% static 'icons/close.svg'%}" alt="" >
+    </div>
+    <div class="mobile-menu-option">
+        <div>
+            Home
+        </div>
+        <div>
+            <img src="{% static 'icons/right-arrow.svg' %}" alt="">
+        </div>
+    </div>
+    <div class="mobile-menu-option">
+        <div>
+            Collection
+        </div>
+        <div>
+            <img src="{% static 'icons/right-arrow.svg' %}" alt="">
+        </div>
+    </div>
+    <div class="mobile-menu-option">
+        <div>
+            Contact
+        </div>
+        <div>
+            <img src="{% static 'icons/right-arrow.svg' %}" alt="">
+        </div>
+    </div>
+    <div class="mobile-menu-option">
+        <div>
+            Profile
+        </div>
+        <div>
+            <img src="{% static 'icons/right-arrow.svg' %}" alt="">
+        </div>
+    </div>
+</div>
+<div id="cart-page" class="no-display">
+    
+    <section class="cart-page cart-page-animation">
+        <div id="loader-container" class="no-display">
+            <div id="loader" class="loader"></div>
+        </div>
+        <div class="cart-page-header">
+            <div class="delete-btn">
+                <img src="{% static 'icons/delete.svg'%}" alt="" >
+            </div>
+            <div>
+                <h2>My Cart</h2>
+            </div>
+            <div class="close-btn mobile-menu-close-btn btn-shadow" id="cart-close">
+                <img src="{% static 'icons/close.svg'%}" alt="" >
+            </div>
+        </div>
+        <div class="cart-details">
+            
+        </div>
+        <div class="cart-summary">
+            <div style="width:30%;height:0.5rem;background-color:#838383; position: relative;top:0rem; border-radius:0.25rem;margin:0rem auto;margin-bottom:4rem;"></div>
+
+            <div class="cart-summary-sub-total">
+                <div>
+                    <h6>Sub Total</h6>
+                    <p id="sub-total">N 0.00</p>
+                </div>
+                <div>
+                    <h6>Delivery & handeling</h6>
+                    <p id="delivery">N 0.00</p>
+                </div>
+            </div>
+            <hr>
+            <div class="cart-summary-sub-total">
+                <div>
+                    <h6>Total</h6>
+                    <p id="total">N 0.00</p>
+                </div>
+            </div>
+            <div class="cart-summary-btn">
+                <a href="/store/shipping">
+                    <button class="btn-shadow">
+                    Checkout
+                    </button>
+                </a>
+                
+            </div>
+            
+        </div>
+    </section>
+</div>
+<section class="no-display" id="search-page">
+    <div class="close-btn mobile-menu-close-btn btn-shadow" id="search-close">
+        <img src="{% static 'icons/close.svg'%}" alt="" >
+    </div>
+
+    <form action="" class="search-form" method="post" id="search-form">
+        {% csrf_token %}
+        <input type="search" name="" id="search-input" placeholder="what are you looking for ?">
+        <input type="submit" value="" id="search-submit">
+        <img src="{% static 'icons/search-icon.svg' %}"></img>
+    </form>
+
+    <section class="our-product">
+        <h5>DESCOVER MORE PRODUCTS</h5>
+        <div style="width:3rem;height:0.2rem;background-color: rgb(10, 10, 10); position: relative;top:-0.5rem; border-radius:0.1rem;margin-bottom: 3rem;"></div>
+         <div class="product-item-container search-items" id='search-results'>
+       
+            
+        </div> 
+    </section>
+    <script src="{% static 'js/search.js' %}"></script>
+</section>
+<script type="text/javascript">
+    function getToken(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+    const csrftoken = getToken('csrftoken');
+</script>
+<script src="{% static 'js/cookies.js' %}"></script>
+<script src="{% static 'js/cart.js' %}"></script>

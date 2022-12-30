@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
+<title>{{product.name}}</title>
+</head>
+{% include 'navbar.html' %}
     <div class="no-display" id="added-to-cart">
         {{product.name}} was added to your cart
     </div>

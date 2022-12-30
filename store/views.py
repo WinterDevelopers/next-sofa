@@ -42,3 +42,7 @@ def delivery(request):
 def search(request):
     template_name = 'search.html'
     return render(request,template_name)
+
+def successful(request):
+    template_name = 'successful.html'
+    return render(request,template_name)

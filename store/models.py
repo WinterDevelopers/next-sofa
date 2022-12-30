@@ -116,7 +116,8 @@ class DeliveryDetails(models.Model):
         status,result = paystack.verifyPayment(self.reference)
 
         if status:
-            if result['amount'] == self.order.get_total_cost:
+            print(self.order.get_total_cost, result['amount'])
+            if result['amount']/100 == self.order.get_total_cost:
                 self.payment_status = True
                 self.save()
             if self.payment_status == True:

@@ -25,9 +25,9 @@ STATIC_DIR = BASE_DIR/'static'
 SECRET_KEY = 'django-insecure-+i9)9j^v60&%6h*3)qyya8!fl5qo_tva2@*%4!)fbx-v$m6p+j'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['157.230.26.202']
+ALLOWED_HOSTS = ['157.230.26.202','nextsofa.store','www.nextsofa.store','127.0.0.1']
 
 
 # Application definition
@@ -142,7 +142,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [STATIC_DIR,]
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles/')
 #media file settings
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

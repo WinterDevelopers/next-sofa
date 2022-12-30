@@ -134,5 +134,5 @@ class ProductSearch(generics.ListAPIView):
 def verifying_payment(request,ref):
     delivery = get_object_or_404(DeliveryDetails, reference=ref)
     verified = delivery.verify_payment()
-    print(verified)
-    return redirect('company:home')
+    #if the verified is true then close the order
+    return redirect('store:successful')

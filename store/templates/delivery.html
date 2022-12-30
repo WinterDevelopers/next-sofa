@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-link
+{% include 'navbar.html' %}
    <section class="shipping-page">
     <div class="shipping-summary">
         <div>
@@ -52,7 +52,8 @@ link
     </div>
     {{forms}}
     <div id="delivery-total" style="display:none;">{{cart.get_total_cost}}</div>
-    <div id="paystack-pub-key" style="display:none;">{{cart.pub_key}}</div>
+    <div id="paystack-pub-key" style="display:none;">{{pub_key}}</div>
    </section>
+   
    <script src="{% static 'js/delivery.js' %}"></script>
 {% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+{% include 'navbar.html' %}
+<div style="padding-top:9rem;"></div>
+<div class="purchase-successful">
+    <h4>Your  purchase was successful</h4>
+    <div style="width:100%;height:0.5px;background-color: rgb(177, 177, 177); position: relative;top:-0.5rem; border-radius:0.1rem;margin-bottom:1.5rem;"></div>
+    <h5>your order number: <b>23456tt567</b></h5>
+    <p>Use the number above to track your order progress</p>
+    <a href="/"><button>Continue</button></a>
+</div>
+{% endblock %}
