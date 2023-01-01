@@ -30,7 +30,7 @@
         <div class="no-display" id="product-info">
             <div class="product-review">
                 <h5>
-                reviews[34]
+                reviews[2]
                 </h5>
                 <img src="{% static 'icons/star.png' %}" alt="" class="review-star">
                 <img src="{% static 'icons/star.png' %}" alt="" class="review-star">
@@ -55,7 +55,7 @@
                 </div>
                 
             </div>
-            <h6> <span>click here</span> to visit our physical showroom </h6>
+            <h6> <span><b>click here</b></span> to visit our physical showroom </h6>
         </div>
         <div class="skeleton-container">
             <div class="skeleton skeleton-text"></div>
@@ -97,7 +97,7 @@
             <div class="review-container-body">
                 Lorem ipsum dolor, sit amet consectetur adipisicing elit. 
                 Dobus, fugiat corrupti. Reprehenderit debitis veritatis 
-                distinctio nulla molestias, 
+                distinctio nulla molestias,[default] 
             </div>
         </div>
         <div class="review-container">
@@ -115,7 +115,7 @@
             <div class="review-container-body">
                 Lorem ipsum dolor, sit amet consectetur adipisicing elit. 
                 Dobus, fugiat corrupti. Reprehenderit debitis veritatis 
-                distinctio nulla molestias, 
+                distinctio nulla molestias,[default]
             </div>
         </div>
        <!--  <div class="review-container">
@@ -145,7 +145,8 @@
     <section class="add-review">
         <h3>Rate this product</h3>
         <h6>Tell others what you think about this product</h6>
-        <form action="" >
+        <form action="" method="post">
+            {% csrf_token %}
            <div class="review-form">
                 <input type="radio" name="rate" id="rating-btn5" data-rate-point5 hidden>
                 <label class="review-form-label" for="rating-btn5"><span class="review-form-span">Excellent</span></label>
@@ -162,7 +163,7 @@
                 <input type="radio" name="rate" id="rating-btn1" data-rate-point1 hidden>
                 <label class="review-form-label" for="rating-btn1"><span class="review-form-span">Disappointing</span></label>
            </div>
-           <textarea class="rating-description" type="" name="" id="" placeholder="describe your experience on this product"></textarea>
+           <textarea class="rating-description" type="" name="review" id="" placeholder="describe your experience on this product"></textarea>
            <input class="submit-review btn-shadow" type="submit" value="Submit review">
         </form>
        <!--  <button id="ggg" >ggg</button>

@@ -34,7 +34,7 @@ def delivery(request):
     else:
         cart, created = Order.objects.get_or_create(user="winter", completed=False)
         #cart_item = OrderItem.objects.filter(order=my_order)
-
+    
     context = {'pub_key':pub_key, 'cart':cart}
     template_name = 'delivery.html'
     return render(request, template_name, context)

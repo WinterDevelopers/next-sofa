@@ -130,6 +130,8 @@ class ProductSearch(generics.ListAPIView):
         '^name',
     ]
 
+def review_form(request):
+    pass
 
 def verifying_payment(request,ref):
     delivery = get_object_or_404(DeliveryDetails, reference=ref)
