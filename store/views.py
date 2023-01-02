@@ -15,6 +15,8 @@ def cart(request):
 def product(request,slug):
     my_product = get_object_or_404(Product, slug=slug)
     other_product = Product.objects.filter(collection=my_product.collection).exclude(id=my_product.id)
+    my_product.insight += 1
+    my_product.save()
     print(other_product)
     context = {'product':my_product, 'others':other_product}
     template_name = 'product.html'

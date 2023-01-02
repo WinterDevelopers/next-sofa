@@ -15,6 +15,7 @@ class Product(models.Model):
     slug = models.SlugField(null=True)
     top_featured = models.BooleanField(default=False)
     description = models.CharField(max_length=400)
+    insight = models.PositiveBigIntegerField(default=0)
     price = models.BigIntegerField(default=0)
     quantity = models.IntegerField(default=0)
     image = models.ImageField(upload_to='product')

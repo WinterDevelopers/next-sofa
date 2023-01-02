@@ -234,7 +234,7 @@ footer{
     background-image: linear-gradient(1deg,rgb(238, 238, 238),rgb(255, 255, 255),rgb(255, 255, 255));
     height:18rem;width:45%;border-radius:0rem 0rem 6rem 7rem;margin-top: auto;position: relative;
 }
-.header-b img{
+.header-b-img{
     position: absolute;
     left: 50%;top:-50%;
     transform: translateX(-50%);
@@ -245,7 +245,7 @@ footer{
     bottom:10%;left:20%;
 }
 
-.header-b object{
+.header-b-icon{
     width: 1rem;
     height: 1rem;
     margin-left: 2rem;
@@ -257,7 +257,7 @@ footer{
     width:60%; margin: 2rem auto;
     font-size:small;
 }
-.promt object{
+.promt img{
     width: 2rem; height: 2rem;
 }
 .collection{
@@ -381,7 +381,7 @@ footer{
     font-size: xx-small;
     color: var(--grey-font);
 }
-.subscribe object{
+.subscribe img{
     position: absolute;
     top:60%;right:28.3%;
     width:1.5rem; height:1.5rem;
@@ -576,7 +576,8 @@ hr{
 }
 .product-img-container img{
     width:100%;
-    max-height: 70%;
+    max-height: 100%;
+    min-height: 50%;
     object-fit: contain;
     margin: auto auto;
 }
@@ -613,7 +614,7 @@ hr{
 }
 .product-price{
     font-size:x-large;
-    font-weight: 900;
+    font-weight: 500;
     margin-top:0;
     margin-left: auto;
     margin-right: 0rem;
@@ -664,15 +665,15 @@ hr{
     padding:0rem;
     margin-left:1rem;
 }
-.add-to-cart object, .call-to-order object{
-    width:1rem;
-    height:1rem;border-radius:1rem;
+.add-to-cart img, .call-to-order img{
+    width:1.5rem;
+    height:1.5rem;border-radius:1rem;
     padding:0.5rem;
 }
-.add-to-cart object{
+.add-to-cart img{
     background-color: #131313;
 }
-.call-to-order object{
+.call-to-order img{
     background-color:#9CF9FF;
 }
 .product-info h6{
@@ -1143,7 +1144,7 @@ hr{
     .header-a p{
         margin-left: 2.5rem;
     }
-    .header-b img{
+    .header-b-img{
         width: 14rem;height: 14rem;
         top:-25%; left:65%;
     }
@@ -1152,7 +1153,7 @@ hr{
         width:80%;
         font-size:0.5rem;
     }
-    .promt object{
+    .promt img{
         width:1.8rem;height:1.8rem;
     }
     .collection>div{
@@ -1205,7 +1206,7 @@ hr{
     .subscribe-form> input[type='submit']{
         right:12%;
     }
-    .subscribe object{
+    .subscribe img{
         right:15%;
     }
     .category-head{

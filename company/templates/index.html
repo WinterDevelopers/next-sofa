@@ -14,30 +14,30 @@
                 from prices that works with your buget</p>
         </div>
         <div class="header-b">
-            <img src="{% static 'images/morden-chair.jpg' %}" alt="">
+            <img class="header-b-img" src="{% static 'images/morden-chair.jpg' %}" alt="">
             <div>
                 <h3>01</h3>
                 <span>Funiture store
-                    <object data="{% static 'icons/golden-arrow.svg' %}" type=""></object></span>
+                <img src="{% static 'icons/golden-arrow.svg' %}" class="header-b-icon">
             </div>
         </div>
     </section>
     <div class="promt">
         <div>
             <span>
-                <object data="{% static 'icons/fast-delivery.svg' %}" type=""></object>
+                <img src="{% static 'icons/fast-delivery.svg' %}">
                 Fast delivery
             </span>
         </div>
         <div>
             <span>
-                <object data="{% static 'icons/secure-payment.svg' %}" type=""></object>
+                <img src="{% static 'icons/secure-payment.svg' %}">
                 Secure payment
             </span>
         </div>
         <div>
             <span>
-                <object data="{% static 'icons/24-7-support.svg' %}" type=""></object>
+                <img src="{% static 'icons/24-7-support.svg' %}">
                 24/7 support
             </span>
         </div>
@@ -136,7 +136,7 @@
             {% csrf_token %}
             <input type="email" placeholder="youremail@email.com">
             <input type="submit" value="" class="btn-shadow">
-            <object data="{% static 'icons/telegram.svg' %}" type=""></object>
+            <img src="{% static 'icons/telegram.svg' %}">
         </form>
     </section>
 

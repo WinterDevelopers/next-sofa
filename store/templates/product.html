@@ -36,8 +36,9 @@
                 <img src="{% static 'icons/star.png' %}" alt="" class="review-star">
                 <img src="{% static 'icons/star.png' %}" alt="" class="review-star">
                 <img src="{% static 'icons/star.png' %}" alt="" class="review-star">
-                <div class="product-price">N [[product.price]]</div>
+                <div class="product-price">N [[Number(product.price).toLocaleString()]]</div>
             </div>
+            
             <h1> [[product.name]]</h1>
             <p>
                 [[product.description]]
@@ -45,12 +46,12 @@
             <div class="product-btns">
                 <div class="add-to-cart btn-shadow" @click="addToCart">
                     <p>Add to cart</p>
-                    <object data="{% static 'icons/cart-light.svg' %}"></object>
+                    <img src="{% static 'icons/cart-light.svg' %}">
                 </div>
                 <div class="call-to-order btn-shadow">
                     <a href="tel:+2348187241462" style="color:white;display:flex;width: 100%;">
                         <p>Call to enquire</p>
-                        <object data="{% static 'icons/call.svg' %}"></object>
+                        <img src="{% static 'icons/call.svg' %}">
                     </a>
                 </div>
                 

@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     #added core apps
+    'django.contrib.sites',
+    'django.contrib.sitemaps',
     'rest_framework',
     'django.contrib.humanize',
     #my apps
@@ -48,6 +50,8 @@ INSTALLED_APPS = [
     #rest-frame work apps[filter]
     
 ]
+
+SITE_ID  =1
 
 AUTH_USER_MODEL = 'company.CustomUser'
 
