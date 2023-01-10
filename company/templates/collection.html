@@ -2,7 +2,9 @@
 {% load static %}
 {% load humanize %}
 {% block content %}
-
+<title>{{collection.name}}</title>
+</head>
+{% include 'navbar.html' %}
 <section class="category">
     <div class="category-head">
         <img src="{{collection.imageURL}}" alt="" class="category-img">

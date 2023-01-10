@@ -2,7 +2,7 @@
 {% load static %}
 {% load humanize %}
 {% block content %}
-<title>Nextsofa</title>
+<title>Next sofa</title>
 </head>
 {% include 'navbar.html' %}
     <section class="header">
@@ -42,7 +42,7 @@
             </span>
         </div>
     </div>
-    <section class="collection">
+    <section class="collection" id="collection">
         <h3>Our Collection</h3>
         <div style="width:2rem;height:0.3rem;background-color: white; position: relative;top:0.8rem; border-radius:0.1rem; margin:0rem auto;"></div>
         <div>
@@ -69,14 +69,14 @@
             
             <a href="/collection/couch">
                 <div class="collection-img-1 btn-shadow">
-                <img src="{% static 'images/couch.png' %}" alt="">
-                <div>Couch</div>
+                <img src="{% static 'images/couch.png' %}" alt="" style="width:125%; transform:translate(-10%,50%);">
+                <div style="margin-top:50%;">Couch</div>
             </div>
             </a>
             
             <a href="/collection/lamps">
                 <div class="collection-img-1 btn-shadow">
-                <img src="{% static 'images/lamp-holder.png' %}" alt="">
+                <img src="{% static 'images/lamp-holder.png' %}" alt="" style="width:100%; transform:translate(-10%,1%);">
                 <div>Lamps</div>
             </div>
             </a>

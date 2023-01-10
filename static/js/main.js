@@ -53,7 +53,8 @@ close_search.addEventListener('click',()=>{
         search_page.className ='no-display'
     },490)
 })
-/* console.log(show_footer) */
+/* console.log(show_footer) 
 let aaa = 10000000000
 let faaa = new Intl.NumberFormat().format(aaa)
-console.log(faaa)
+console.log(faaa) */
+

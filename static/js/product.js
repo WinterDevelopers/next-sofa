@@ -150,3 +150,17 @@ function slider(number){
     //activate the selected in reference to the images
     bottom_dash[slide_number-1].className ='bottom-indicator-active';
 }
+
+let more_detail_arrow = document.getElementById('more-details-arrow')
+let more_detail_info = document.getElementById('more-details-info')
+more_detail_arrow.addEventListener('click',()=>{
+
+    if(more_detail_arrow.style.rotate != '180deg'){
+        more_detail_arrow.style.rotate='180deg'
+        more_detail_info.className = 'more-details-info'
+    }
+    else{
+        more_detail_arrow.style.rotate='0deg'
+        more_detail_info.className = 'no-display'
+    }
+})

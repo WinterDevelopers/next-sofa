@@ -7,9 +7,8 @@
         </div>
         <div class="navbar-options no-display-min">
             <div>Home</div>
-            <div>Collection</div>
-            <div>Contact</div>
-            <div>Profile</div>
+            <a href="/#collection"> Collection</a>
+            <a href="#contact"> Contact</a>
         </div>
     
         <div class="navbar-cart">
@@ -31,36 +30,46 @@
     </div>
     <div class="mobile-menu-option">
         <div>
-            Home
+            <a href="{% url 'company:home' %}">Home</a>
         </div>
         <div>
-            <img src="{% static 'icons/right-arrow.svg' %}" alt="">
+            <a href="{% url 'company:home' %}">
+                <img src="{% static 'icons/right-arrow.svg' %}" alt="">
+            </a>
         </div>
     </div>
-    <div class="mobile-menu-option">
+    <div class="mobile-menu-option" id="collection-side-bar">
         <div>
             Collection
         </div>
+        <div id="collection-side-bar-arrow">
+            <img src="{% static 'icons/right-arrow.svg' %}" alt="">
+        </div>
+    </div>
+    <div class="no-display" id="collection-side-bar-content">
+        <div><a href="/collection/bed-frame">Bed frame</a></div>
+        <div><a href="/collection/office-chair">Office chair</a></div>
+        <div><a href="/collection/gaming-chair">Gaming chair</a></div>
+        <div><a href="/collection/lamps">Lamps</a></div>
+        <div><a href="/collection/couch">Couch</a></div>
+        <div><a href="/collection/dinning-sets">Dinning Set</a></div>
+    </div>
+    <div class="mobile-menu-option">
+        <div>
+            <a href="#contact">Contact</a>
+        </div>
         <div>
             <img src="{% static 'icons/right-arrow.svg' %}" alt="">
         </div>
     </div>
-    <div class="mobile-menu-option">
-        <div>
-            Contact
-        </div>
-        <div>
-            <img src="{% static 'icons/right-arrow.svg' %}" alt="">
-        </div>
-    </div>
-    <div class="mobile-menu-option">
+    <!-- <div class="mobile-menu-option">
         <div>
             Profile
         </div>
         <div>
             <img src="{% static 'icons/right-arrow.svg' %}" alt="">
         </div>
-    </div>
+    </div> -->
 </div>
 <div id="cart-page" class="no-display">
     
@@ -153,6 +162,21 @@
         return cookieValue;
     }
     const csrftoken = getToken('csrftoken');
+</script>
+<script>
+    let collection_side_bar = document.querySelector('#collection-side-bar')
+    let collection_side_bar_content = document.querySelector('#collection-side-bar-content')
+    collection_side_bar.addEventListener('click', ()=>{
+    
+    if (collection_side_bar_content.className != 'collection-side-bar'){
+        collection_side_bar_content.className = 'collection-side-bar';
+        document.getElementById('collection-side-bar-arrow').style.rotate = '90deg';
+    }
+    else{
+        collection_side_bar_content.className = 'no-display';
+        document.getElementById('collection-side-bar-arrow').style.rotate = '0deg';
+    }
+    })
 </script>
 <script src="{% static 'js/cookies.js' %}"></script>
 <script src="{% static 'js/cart.js' %}"></script>
