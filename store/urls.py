@@ -14,7 +14,7 @@ urlpatterns = [
     path('cart', views.cart, name='cart'),
     path('successful', views.successful, name='successful'),
     path('sitemap.xml', sitemap, {'sitemaps':sitemaps}, name = 'django.contrib.sitemaps.views.sitemap'),
-    path('<slug:slug>/', views.product, name='product'),
     path('shipping/', views.delivery, name='shipping'),
     path('search', views.search, name='search'),
+    path('<slug:slug>/', views.product, name='product'),
 ]
