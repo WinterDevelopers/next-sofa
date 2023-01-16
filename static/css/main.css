@@ -653,7 +653,7 @@ hr{
 }
 .add-to-cart{
     background-color: #080808; color: white;
-    margin-right: 1rem;
+    margin-right:0rem;
 }
 .call-to-order{
     background-color: #71F2FA;color: white;
@@ -666,12 +666,12 @@ hr{
     margin-left:1rem;
 }
 .add-to-cart img, .call-to-order img{
-    width:1.5rem;
-    height:1.5rem;border-radius:1rem;
+    width:1rem;
+    height:1rem;border-radius:1rem;
     padding:0.5rem;
 }
 .add-to-cart img{
-    background-color: #131313;
+    background-color: rgb(109, 255, 89);
 }
 .call-to-order img{
     background-color:#9CF9FF;
