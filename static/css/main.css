@@ -1291,7 +1291,7 @@ hr{
     .add-to-cart p,.call-to-order p{
         font-size:medium;
     }
-    .add-to-cart object, .call-to-order object{
+    .add-to-cart img, .call-to-order img{
         width:1.5rem;
         height:1.5rem;
     }
