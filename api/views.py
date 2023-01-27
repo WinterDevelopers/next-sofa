@@ -127,7 +127,7 @@ class ProductSearch(generics.ListAPIView):
     #name = 'products-list'
     filter_backends = [filters.SearchFilter]
     search_fields = [
-        '^name',
+        '^name','$name'
     ]
 
 def review_form(request):

@@ -1,4 +1,6 @@
-#!/home/winter/Documents/winterdevelopers/MyProjects/next_sofa/env/bin/python
+#!/bin/sh
+'''exec' "/home/winter/Documents/winterdevelopers/MyProjects/online store/next_sofa/env/bin/python3" "$0" "$@"
+' '''
 # -*- coding: utf-8 -*-
 import re
 import sys

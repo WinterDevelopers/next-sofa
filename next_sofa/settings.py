@@ -44,14 +44,13 @@ INSTALLED_APPS = [
     'django.contrib.sitemaps',
     'rest_framework',
     'django.contrib.humanize',
+    'django_filters',
     #my apps
     'company',
     'store',
     #rest-frame work apps[filter]
     
 ]
-
-SITE_ID  =1
 
 AUTH_USER_MODEL = 'company.CustomUser'
 

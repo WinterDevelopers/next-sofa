@@ -331,6 +331,7 @@ footer{
 }
 .product-item-container>div h5,p{
     padding-left:1rem;
+    inline-size:8rem;
 }
 .why-next-sofa{
     width:40rem;
@@ -1225,7 +1226,7 @@ hr{
         font-size: large;
     }
     .product-image{
-        width: 7rem;height:9rem;
+        width: 8.5rem;height:9rem;
     }
     .product-image img{
         margin:0rem; 

@@ -14,7 +14,7 @@ def base(request):
 
 def index(request):
     collection = Collection.objects.get(id=1)
-    featured_products = Product.objects.filter(top_featured=True).order_by('?')[:6]
+    featured_products = Product.objects.filter(top_featured=True).order_by('?')[:8]
     template_name = 'index.html'
     context={'collection':collection, 'featured_products':featured_products}
     return render(request, template_name, context)
@@ -24,7 +24,7 @@ def collection(request, slug):
     featured_products = Product.objects.filter(collection=collection)
     page = request.GET.get('page',1)
    
-    pagnated_products = Paginator(featured_products,4)
+    pagnated_products = Paginator(featured_products,10)
     try:
         products = pagnated_products.page(page)
     except PageNotAnInteger:
