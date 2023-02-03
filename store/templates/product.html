@@ -28,6 +28,8 @@
             </div>
         </div>
         <div class="no-display" id="product-info">
+            
+            <h1 id="product_name"> [[product.name]]</h1>
             <div class="product-review">
                 <h5>
                 Reviews[2]
@@ -38,8 +40,6 @@
                 <img src="{% static 'icons/star.png' %}" alt="" class="review-star">
                 <div class="product-price" id="product_price">N [[Number(product.price).toLocaleString()]]</div>
             </div>
-            
-            <h1 id="product_name"> [[product.name]]</h1>
             <p>
                 [[product.description]]
             </p>

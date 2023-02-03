@@ -367,24 +367,27 @@ footer{
     width:35%;height: 2.5rem;padding:0.5rem;
     border-radius:1.75rem; border:none;
     background-color:#ffffff;padding-right: 6%;
-    margin: 5rem 30%;padding-left:2%;
+    margin: 5rem auto;padding-left:2%;
 }
 .subscribe-form> input[type='submit']{
     width:2.8rem;height:2.8rem;position:absolute;
     border-radius:50%;background-color:#FFE178;
-    border:none;top:53.5%;right:27.5%;
+    border:none;top:53.5%;right:29%;
 }
 .subscribe h4{
     font-size:x-large;
     padding-top: 3rem;
 }
 .subscribe p{
+    position: relative;
     font-size: xx-small;
     color: var(--grey-font);
+    margin:0 auto;
+    text-align:leftx;
 }
 .subscribe img{
     position: absolute;
-    top:60%;right:28.3%;
+    top:60%;right:29.8%;
     width:1.5rem; height:1.5rem;
 }
 .category{
