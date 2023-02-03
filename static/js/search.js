@@ -28,7 +28,7 @@ function (e){
            
                 search_results.innerHTML += `
                 <div>
-                <a href="/store/product/${data[a].slug}">
+                <a href="/product/${data[a].slug}">
                     <div class="product-image">
                         <img src="${data[a].image}" alt="">
                     </div>
