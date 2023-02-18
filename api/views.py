@@ -2,6 +2,7 @@ import email
 from django.shortcuts import get_object_or_404
 from django.http import HttpResponse, HttpRequest
 from django.shortcuts import redirect
+from django.contrib.auth.models import U
 
 from store.models import DeliveryDetails, OrderItem, Product,ProductImages,Order
 from rest_framework import generics,filters
@@ -11,32 +12,52 @@ from rest_framework.decorators import api_view
 
 import json
 
+#this api view function is responsible for get a product based on the id and should be a get not post request
 @api_view(['POST'])
 def productPageData(request):
+    #data from the fetch api call
     data = request.data
     product_id = data['id']
+
+    #get the product by the id or raise error 404
     product = get_object_or_404(Product, id=product_id)
+
+    #get the other images associated the product
     image = ProductImages.objects.filter(product=product)
+
+    #serialize the product and image data so it can be sent out
     serial_product = SerializedProduct(product,many=False)
     serial_image = SerializedProductImages(image, many=True)
     data = {'product_info':serial_product.data, 'product_images':serial_image.data}
+    
+    #return the response with the data content of the api request
     return Response(data)
 
+#add to cart for a user that is logged in
 @api_view(['POST'])
 def addToCart(request):
     data = request.data
     product_id = data['id']
+    #get the product by the id or raise error 404
     product = get_object_or_404(Product, id=product_id)
+    #get the users other or create one if it is not there or does not have one
     my_order, created = Order.objects.get_or_create(user="winter", completed=False)
+    #from that order get the items of that order or creat an order item for that other
     item, created = OrderItem.objects.get_or_create(order=my_order, product=product)
     item.quantity += 1
     item.save()
     return Response(200)
-    
+
+
+#this view function is to view the cart page data for the user or the browser
 @api_view(['POST'])
 def cartPageData(request):
+    #1st check if the user is not logged in
     if str(request.user) == 'AnonymousUser':
+        #create object syntack for the cart
         cart = {'total-cost':0, 'total-items':0, 'products':''}
+        #get the person cart from the client browser
+        #the cookie name here was next-sofa which is dynamic and will changed for different projects
         guest = json.loads(request.COOKIES.get('next-sofa'))
         products = []
         for i in guest:
@@ -48,28 +69,32 @@ def cartPageData(request):
         cart['products']=products
 
     else:
+        #if the user is logged in access the order model to get that data
         my_order, created = Order.objects.get_or_create(user="winter", completed=False)
         cart_item = OrderItem.objects.filter(order=my_order)
         products = []
         for i in cart_item:
             query = {}
+            #get the oder item id and use it to create a key to store the object
             query[i.id]={'name':i.product.name, 'price':i.product.price, 'image':i.product.imageURL(),'id':i.product.id}
-            print(query)
+            #print(query)
             products.append(query)
-        print(products)
+        #print(products)
         order = SerializedOrder(my_order, many=False)
         items = SerializedOrderItem(cart_item, many=True)
         cart= {'items':items.data,'order':order.data, 'total-cost':my_order.get_total_cost,
         'total-items':my_order.get_total_orderitems,'products':products}
-        
+
     return Response(cart)
 
+#for the cart arthemetics 
 @api_view(['POST'])
 def cartFunction(request):
     data = request.data
     product_id = data['id']
     operation = data['operation']
     if str(request.user) == 'AnonymousUser':
+        # cookie name next-sofa which is dynamic for another project
         cookie_cart = json.loads(request.COOKIES['next-sofa'])
         
         if operation=='add':
@@ -101,7 +126,7 @@ def cartFunction(request):
 @api_view(['POST'])
 def deliveryFunction(request):
     data = request.data
-    print(data)
+    #print(data)
     email = data['email']
     name = data['name']
     number = data['number']
@@ -120,7 +145,7 @@ def deliveryFunction(request):
     return Response(serial_datails.data)
 
 
-
+#simple search functionality to get products of the store
 class ProductSearch(generics.ListAPIView):
     queryset = Product.objects.all()
     serializer_class = SerializedProduct

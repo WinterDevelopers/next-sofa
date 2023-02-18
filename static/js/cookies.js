@@ -1,6 +1,7 @@
 //let work with cookies
 function getCookies(name){
-    let my_cookie = document.cookie.split(';')
+    //get the cookie of the user's browser
+    let my_cookie = document.cookie.split(';');
     for(var i=0;i <my_cookie.length; i++){
         let cookie_pair = my_cookie[i].split('=')
         if( name == cookie_pair[0].trim()){
