@@ -2,7 +2,7 @@ import email
 from django.shortcuts import get_object_or_404
 from django.http import HttpResponse, HttpRequest
 from django.shortcuts import redirect
-from django.contrib.auth.models import U
+from django.contrib.auth.models import User
 
 from store.models import DeliveryDetails, OrderItem, Product,ProductImages,Order
 from rest_framework import generics,filters
@@ -29,7 +29,7 @@ def productPageData(request):
     serial_product = SerializedProduct(product,many=False)
     serial_image = SerializedProductImages(image, many=True)
     data = {'product_info':serial_product.data, 'product_images':serial_image.data}
-    
+
     #return the response with the data content of the api request
     return Response(data)
 
