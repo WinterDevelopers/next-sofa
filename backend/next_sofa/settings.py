@@ -107,7 +107,7 @@ else:
     DATABASES =   {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': 'nextsofa',
+            'NAME': 'next_sofa_db',
             'USER': 'winter',
             'PASSWORD': 'Complexshit',
             'HOST': 'localhost',
