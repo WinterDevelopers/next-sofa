@@ -1,5 +1,5 @@
 import Link from "next/link"
-import nsapi from "../../../fetchurlconfig"
+import {nsmedia} from "../../../fetchurlconfig"
 
 export default function RelatedProduct(props){
 
@@ -7,7 +7,7 @@ export default function RelatedProduct(props){
         <div id={props.product_id}>
             <Link href={`/products/${props.product_slug}`}>
                 <div class="product-image">
-                <img src={nsapi+props.product_imageLink} alt={props.product_name}></img>
+                <img src={nsmedia+props.product_imageLink} alt={props.product_name}></img>
                 </div>
                 <h5>
                     {props.product_name}

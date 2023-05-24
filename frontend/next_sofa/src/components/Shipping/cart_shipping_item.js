@@ -1,10 +1,10 @@
-import nsapi from "../../../fetchurlconfig"
+import {nsmedia} from "../../../fetchurlconfig"
 
 export default function ShippingItems(props){
     return <>
         <div>
             <div>
-                <img src={nsapi+props.image_link} className="summary-cart-img"></img>
+                <img src={nsmedia+props.image_link} className="summary-cart-img"></img>
             </div>
             <div className="summary-cart-details"> 
                 <div>

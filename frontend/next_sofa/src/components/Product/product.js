@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState} from "react";
-import nsapi from "../../../fetchurlconfig";
+import { nsmedia } from "../../../fetchurlconfig";
 import imageSliderFunction from "../../functionality/product_Images_funtionality";
 
 import RelatedProduct from "../Global/related_products";
@@ -29,10 +29,10 @@ export default function Product(props){
         <section id="product-app" class="product">
        <div id="product-id" class="no-display" data-product-id={props.product_id}></div>
         <div class="product-img-container">
-            <img src={`${nsapi+props.product_image}`} alt="" class="product-images" id="imageURL"></img>
+            <img src={`${nsmedia+props.product_image}`} alt="" class="product-images" id="imageURL"></img>
             {props.other_images.map(imgx=>{
                 return(
-                    <img key={imgx.id} src={`${nsapi+imgx.image}`} className="no-display product-images"></img>
+                    <img key={imgx.id} src={`${nsmedia+imgx.image}`} className="no-display product-images"></img>
                 )
             })}
             <button  class="nxt-img">

@@ -1,5 +1,5 @@
 import loadingAnime from "@/functionality/loader_func";
-import nsapi from "../../fetchurlconfig";
+import {nsmedia} from "../../fetchurlconfig";
 import { useEffect } from "react"
 
 function Tracking(){
@@ -31,7 +31,7 @@ function Tracking(){
             ${data.data.items.map(item => {
                 return(
                     `<div class="purchased-items">
-                    <img src="${nsapi+item.image}"></img>
+                    <img src="${nsmedia+item.image}"></img>
                     <div>
                         <div class="purchased-items-name">
                             ${item.name}
