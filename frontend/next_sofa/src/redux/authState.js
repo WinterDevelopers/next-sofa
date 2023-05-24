@@ -15,11 +15,16 @@ const userStatusSlice = createSlice({
     reducers:{
         setUserStatus:(state, action)=>{
             state.userAuthState=true;
-            state.name= action.payload.username;
-            state.email= action.payload.email;
-            state.address = action.payload.address;
-            state.city = action.payload.city;
-            state.state = action.payload.state;
+            if (action.payload == null || action.payload == undefined){
+                
+            }
+            else{
+                state.name= action.payload.username;
+                state.email= action.payload.email;
+                state.address = action.payload.address;
+                state.city = action.payload.city;
+                state.state = action.payload.state;
+                }
         },
 
         removeUserStatus:(state)=>{

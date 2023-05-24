@@ -12,6 +12,20 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 import os
 import datetime
 from pathlib import Path
+from dotenv import load_dotenv
+
+load_dotenv()
+PAYSTACK_PUBLIC_KEY = os.environ.get('PAYSTACK_PUBLIC_KEY')
+PAYSTACK_SECRET_KEY = os.environ.get('PAYSTACK_SECRET_KEY')
+DB_ENGINE= os.environ.get('DB_ENGINE')
+DB_NAME= os.environ.get('DB_NAME')
+DB_USER= os.environ.get('DB_USER')
+DB_PASSWORD= os.environ.get('DB_PASSWORD')
+DB_HOST= os.environ.get('DB_HOST')
+EMAIL=os.environ.get('EMAIL')
+EMAIL_PASSWORD = os.environ.get('EMAIL_PASSWORD')
+DJANGO_KEY = os.environ.get('DJANGO_KEY')
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -23,9 +37,10 @@ STATIC_DIR = BASE_DIR/'static'
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-+i9)9j^v60&%6h*3)qyya8!fl5qo_tva2@*%4!)fbx-v$m6p+j'
+SECRET_KEY = DJANGO_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
+
 DEBUG = True
 
 ALLOWED_HOSTS = ['164.92.137.80','nextsofa.store','www.nextsofa.store','127.0.0.1']
@@ -106,11 +121,11 @@ if DEBUG:
 else:
     DATABASES =   {
         'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': 'next_sofa_db',
-            'USER': 'winter',
-            'PASSWORD': 'Complexshit',
-            'HOST': 'localhost',
+            'ENGINE':DB_ENGINE,
+            'NAME': DB_NAME,
+            'USER': DB_USER,
+            'PASSWORD': DB_PASSWORD,
+            'HOST': DB_HOST,
             'PORT': '',
             }   
         }
@@ -168,11 +183,6 @@ REST_FRAMEWORK ={
     'DEFAULT_FILTER_BACKENDS':['django_filters.rest_framework.DjangoFilterBackend'],
 }
 
-from dotenv import load_dotenv
-
-load_dotenv()
-PAYSTACK_PUBLIC_KEY = os.environ.get('PAYSTACK_PUBLIC_KEY')
-PAYSTACK_SECRET_KEY = os.environ.get('PAYSTACK_SECRET_KEY')
 
 
 REST_FRAMEWORK = {
@@ -210,9 +220,9 @@ SIMPLE_JWT = {
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'winterdevelopers@gmail.com'
-EMAIL_HOST_PASSWORD = 'ewfpvgpedrjiwptw'
+EMAIL_HOST_USER = EMAIL
+EMAIL_HOST_PASSWORD = EMAIL_PASSWORD
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_TIMEOUT = 30 # in seconds
-DEFAULT_FROM_EMAIL = 'sender name winterdevelopers@gmail.com'
+DEFAULT_FROM_EMAIL = 'sender name Next sofa'

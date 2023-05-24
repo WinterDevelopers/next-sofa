@@ -25,7 +25,7 @@ export const cookiesAuth = (authCookie)=>{
     let auth_cookie = JSON.parse(getCookies(authCookie));
     if(auth_cookie==undefined){
         const d = new Date();
-        d.setTime(d.getTime()+(60*1000));
+        d.setTime(d.getTime()+(1000*60*60));
         let expires = `expires=${d.toUTCString()};`
         let user_status = true;
         document.cookie = `${authCookie}=`+JSON.stringify(user_status)+"; domain=;"+expires+"path=/;";

@@ -8,6 +8,7 @@ import storage from 'redux-persist/lib/storage';
 import thunk from "redux-thunk";
 
 const persistConfig ={
+    timeout:2000,
     key:'root',
     version:1,
     storage,

@@ -65,7 +65,7 @@ export default function DeliveryDetails(){
         makePayment(data);
         loadingAnime(false);
     };
-    
+
     return<>
         <form name="shipping_form" class="shipping-form" id="delivery-form" onSubmit={shippingFunc}>
             <h2>Delivery Details</h2>
@@ -87,15 +87,15 @@ export default function DeliveryDetails(){
 
             <label for="">Address</label>
             <br></br>
-            <input type="text" name="address" value={address??''} required></input>
+            <input type="text" name="address" value={address??null} required></input>
             
             <label for="">City</label>
             <br></br>
-            <input type="text" name="city" value={city??''} required></input>
+            <input type="text" name="city" value={city??null} required></input>
 
             <label for="">State</label>
             <br></br>
-            <input type="text" name="state" value={state??''} required></input>
+            <input type="text" name="state" value={state??null} required></input>
 
             <input type="submit" value="Submit Details" class="" id="submit-delivery-details"></input>
             <div class="no-display" id="waiting-animation"></div>

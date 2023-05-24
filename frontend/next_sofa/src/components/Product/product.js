@@ -35,10 +35,10 @@ export default function Product(props){
                     <img key={imgx.id} src={`${nsapi+imgx.image}`} className="no-display product-images"></img>
                 )
             })}
-            <button class="nxt-img">
+            <button  class="nxt-img">
                 <img src="../assets/icons/right-arrow.svg"></img>
             </button>
-            <button class="prev-img">
+            <button type="button" class="prev-img">
                 <img src="../assets/icons/right-arrow.svg"></img>
             </button>
             <div class="bottom-indicators"></div>

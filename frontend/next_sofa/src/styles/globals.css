@@ -268,7 +268,8 @@ footer{
 .collection>div{
   margin: 0rem auto;
   margin-top:5rem;
-  display:flex;flex-direction: row-reverse;
+  display:flex;
+  flex-direction: column;
   justify-content: space-between; flex-wrap:wrap;
   width:35rem;
 }
@@ -276,29 +277,28 @@ footer{
   margin:0rem;
   font-size: xx-large;
 }
-.collection-img-1{
+.collection-img {
   background-color: #E9E9E9;border:0.5rem white solid;
-  width:5rem;height:6rem; padding:1rem; margin-bottom:1rem;
+  width:90%;height:20%; margin-bottom:1rem;
+  padding-top:1rem;
   display: block;
+  margin:1rem auto;
 }
-.collection-img-1 div{
-  margin-top:auto 0rem;font-size: small;
-  color: var(--grey-font);margin-top:0.7rem;
-}
-.collection-img-2{
-  background-color: #E9E9E9;border:0.5rem white solid;
-  width:15rem;height:6rem; padding:1rem;margin-bottom:1rem;
-  display: block;
-}
-.collection-img-2 div{
+.collection-img div{
   margin:0 auto;font-size: small;inline-size:6rem;
   color: var(--grey-font);margin-top:1rem;
 }
-.collection-img-1 img{
-  width:3rem; margin:auto 0rem;
+.collection-img img{
+  max-width:7.5rem; 
+  max-height:5rem;
+  margin:auto 0rem;
 }
-.collection-img-2 img{
-  width:7.5rem; margin:auto 0rem;
+
+.category-product-container{
+  display: flex;
+  flex-direction: row;
+  overflow-x: auto;
+  background-color: #f6f6f6;
 }
 .our-product{
   padding:2rem;
@@ -609,8 +609,8 @@ hr{
   position: absolute;top:50%;opacity:0.7;
 }
 .prev-img{
-  rotate:180deg;
-  transform: translateY(50%);
+  transform: rotate(180deg) !important;
+  top:43%;
 }
 .nxt-img{
   right:0.5rem;
@@ -1432,6 +1432,19 @@ hr{
 .current-delivery-details span{
   color: #838383;
 }
+.loading_page{
+  background-color:rgb(255, 255, 255);
+  position:sticky;
+  z-index:10;
+  top:0;
+  width:100%;
+  height:100vh;
+}
+.loading_page img{
+  width:40%;
+  margin:40vh 30%;
+}
+
 @media only screen and (max-width:1024px) {
   .shipping-page{
     grid-template-columns: 1fr 1fr;
@@ -1569,7 +1582,7 @@ hr{
       font-size: large;
   }
   .product-image{
-      width: 8.5rem;height:9rem;
+      width: 6rem;height:9rem;
   }
   .product-image img{
       margin:0rem; 
@@ -1599,9 +1612,9 @@ hr{
       margin-top:1rem;
   }
   .cart-summary{
-      width:92vw;height:35vh;
+      width:92vw;height: fit-content;
       margin-right: auto;
-      padding:1rem 4vw;
+      padding:0.8rem 4vw;
   }
   .cart-summary-sub-total{
       width:80%;
