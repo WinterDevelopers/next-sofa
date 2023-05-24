@@ -43,7 +43,7 @@ SECRET_KEY = DJANGO_KEY
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['164.92.137.80','nextsofa.store','www.nextsofa.store','127.0.0.1']
+ALLOWED_HOSTS = ['64.226.103.6','api.nextsofa.store','127.0.0.1']
 
 
 # Application definition
@@ -199,12 +199,17 @@ REST_FRAMEWORK = {
 CORS_ALLOW_CREDENTIALS=True
 
 CORS_ALLOWED_ORIGINS = [
-    "http://127.0.0.1:8000",
-    "http://127.0.0.1:3000",
-    "http://localhost:3000",  
+    'http://api.nextsofa.store',
+    'http://nextsofa.store',
+    'http://64.226.103.6',
+    'http://www.nextsofa.store',
 ]
+
 CORS_ALLOWED_ORIGIN_REGEXES = [
-    'http://localhost:3000',
+    'http://api.nextsofa.store',
+    'http://nextsofa.store',
+    'http://64.226.103.6',
+    'http://www.nextsofa.store',
 ]
 
 SIMPLE_JWT = {
