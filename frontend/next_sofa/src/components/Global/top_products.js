@@ -13,7 +13,7 @@ export default function Products(props){
                     {props.product_name}
                 </h5>
                 <p>
-                    {props.product_price}
+                  &#8358;  {Intl.NumberFormat().format(props.product_price)}
                 </p>
                 <div class="product-review-star">
                     <img src="../assets/icons/star.png" alt=""></img>

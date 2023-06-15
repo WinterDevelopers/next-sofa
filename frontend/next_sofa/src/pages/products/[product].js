@@ -1,10 +1,10 @@
-import Product from "@/components/Product/product"
+import Product from "@/components/Product/product";
 import nsapi from "../../../fetchurlconfig";
 import authSet from "@/functionality/auth";
 
 let run_once = true;
 
-function ProductPage({product,product_image,related_products}){
+function ProductPage({product,product_image,related_products,reviews}){
     if(run_once){
        authSet(); 
        run_once = !run_once
@@ -20,18 +20,19 @@ function ProductPage({product,product_image,related_products}){
         product_image={product.image} 
         other_images={product_image}
         related_products={related_products}
+        reviews={reviews}
         />
     </>
 }
 
 export async function getServerSideProps(context){
-    const slug = context.params['product']
-    const url = `${nsapi}store/api/${slug}/`
-    const fetched_data = await fetch(url)
-    const product_data = await fetched_data.json()
-    const {product,product_image,related_products} = product_data
+    const slug = context.params['product'];
+    const url = `${nsapi}store/api/${slug}/`;
+    const fetched_data = await fetch(url);
+    const product_data = await fetched_data.json();
+    const {product,product_image,related_products,reviews} = product_data;
 
-    return {props:{product, product_image, related_products}}
+    return {props:{product, product_image, related_products, reviews}};
 }
 
 export default ProductPage

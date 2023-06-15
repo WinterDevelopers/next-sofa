@@ -53,7 +53,7 @@ export default function MobileMenu(props){
 
             <div className="mobile-menu-option">
                 <div onClick={props.toggle_mobile_menu}>
-                    {userAuthState?<Link href={'/login'}>Logout</Link>:<Link href={'/logout'}>Login</Link>}
+                    {userAuthState?<Link href={'/logout'}>Logout</Link>:<Link href={'/login'}>Login</Link>}
                     
                 </div>
                 <div onClick={props.toggle_mobile_menu}>

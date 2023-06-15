@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from company.models import CustomUser
-from ..models import Product, ProductImages, Order, OrderItem, DeliveryDetails,PurchasedItem
+from ..models import Product, ProductImages, Order, OrderItem, DeliveryDetails,PurchasedItem, Review
 
 class serializedProducts(serializers.ModelSerializer):
     class Meta:
@@ -35,4 +35,9 @@ class serializedCustomUser(serializers.ModelSerializer):
 class serializedPurchasedItem(serializers.ModelSerializer):
     class Meta:
         model = PurchasedItem
+        fields = '__all__'
+
+class serializedReview(serializers.ModelSerializer):
+    class Meta:
+        model = Review
         fields = '__all__'

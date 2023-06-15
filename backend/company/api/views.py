@@ -58,7 +58,7 @@ import json
 @permission_classes([IsAuthenticated])
 def userDetails(request):
     user = request.user
-    user_details = {'email':str(user.email),'username':str(user.username), 'address':str(user.address), 'city':str(user.city), 'state':str(user.state), 'country':str(user.country)}
+    user_details = {'email':str(user.email),'username':str(user.username), 'address':str(user.address), 'city':str(user.city), 'state':str(user.state)}
     user_details_ = user_details
     return Response(user_details_,200)
 

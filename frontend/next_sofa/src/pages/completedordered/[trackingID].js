@@ -38,7 +38,7 @@ export async function getServerSideProps(context){
   const url = `${nsapi}store/api/track-item/${slug}`;
   const fetched_data = await fetch(url);
   const product_data = await fetched_data.json();
-  const {email,total,date,transaction_id,tracking_id, order} = product_data
-
+  const {details} = product_data
+  const {email,total,date,transaction_id,tracking_id, order} = details
   return {props:{email,total,transaction_id,tracking_id, date, order}}
 }

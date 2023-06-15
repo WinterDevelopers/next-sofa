@@ -1,0 +1,8 @@
+# Block all crawlers for /
+User-agent: *
+Disallow: /api/
+Disallow: api.nextsofa.store
+
+# Allow all crawlers
+User-agent: *
+Allow: /

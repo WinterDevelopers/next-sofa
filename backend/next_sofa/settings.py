@@ -199,17 +199,12 @@ REST_FRAMEWORK = {
 CORS_ALLOW_CREDENTIALS=True
 
 CORS_ALLOWED_ORIGINS = [
-    'http://api.nextsofa.store',
-    'http://nextsofa.store',
-    'http://64.226.103.6',
-    'http://www.nextsofa.store',
+    "http://127.0.0.1:8000",
+    "http://127.0.0.1:3000",
+    "http://localhost:3000",  
 ]
-
 CORS_ALLOWED_ORIGIN_REGEXES = [
-    'http://api.nextsofa.store',
-    'http://nextsofa.store',
-    'http://64.226.103.6',
-    'http://www.nextsofa.store',
+    'http://localhost:3000',
 ]
 
 SIMPLE_JWT = {

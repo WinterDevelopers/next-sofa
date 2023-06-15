@@ -1,8 +1,6 @@
 import PaystackPop from '@paystack/inline-js';
 import nsapi from '../fetchurlconfig';
 import loadingAnime from '@/functionality/loader_func';
-import {redirect} from 'next/navigation'
-
 
 
 export function payWithPaystack(email,amout,ref) {
@@ -30,13 +28,23 @@ export function payWithPaystack(email,amout,ref) {
 }
 
 export const ApiVerifyPayment = async(reference)=>{
-  const url = `${nsapi}store/api/verify-payment/${reference}`;
-  
-  let response = await fetch(url);
+  const url = 'api/verify_payment';
+  const body = {'ref':reference}
+  const option = {
+    method:"POST",
+    headers:{
+      'Accept':'application/json',
+      'Content-Type':'application/json',
+    },
+    body:JSON.stringify(body)
+  }
+  let response = await fetch(url,option);
+  console.log(response)
   let data = await response.json();
+  console.log(data)
   if(response.status == 201 || response.status == 202){
     loadingAnime(false)
-    window.location.replace(`/completedordered/${data}`)
+    window.location.replace(`/completedordered/${data['id']}`)
   }
   else{
     return data

@@ -9,7 +9,7 @@ from .serializer import serializedPurchasedItem, serializedProducts, serializedO
 
 from ..productPage import ProductPage
 from ..shippingFunc import ShippingFunc
-from ..models import Product, Order, OrderItem,DeliveryDetails,PurchasedItem
+from ..models import Product, Order, OrderItem,DeliveryDetails,PurchasedItem,Review
 from ..send_receipt import send_receipt
 
 import json
@@ -21,8 +21,9 @@ def getProduct(request, slug):
     product = ProductPage(slug)
     the_product = product.getProduct()
     related_products = product.getRelatedProduct()
+    reviews = product.productReview(the_product.data)
     the_product_images = product.productImages(the_product.data)    
-    product_data = {'product':the_product.data, 'product_image':the_product_images.data, 'related_products':related_products.data}
+    product_data = {'product':the_product.data, 'product_image':the_product_images.data,'reviews':reviews, 'related_products':related_products.data,}
     return Response(product_data)
 
 @api_view(['POST'])
@@ -84,22 +85,38 @@ def shippingPage(request):
 def verifyPayment(request,ref):
     delivery = get_object_or_404(DeliveryDetails, reference=ref)
     delivery_payment_status = delivery.verify_payment()
+
     if delivery_payment_status:
         purchased_item = PurchasedItem.objects.create(order=delivery.order, email=delivery.email, address=delivery.address, total=delivery.order.get_total_cost, transaction_id=delivery.reference)
+        purchased_products = OrderItem.objects.filter(order=delivery.order)
+        user = request.user
+        
+        if not str(user) == 'AnonymousUser':
+            for a in purchased_products:
+                prd_id = a.product.id
+                product = get_object_or_404(Product, id=prd_id)
+                product.customer.add(user.id)
+                product.save()
+                
 
         try:
-            sent_receipt=send_receipt(purchased_item.tracking_id,purchased_item.email)
+            sent_receipt = send_receipt(purchased_item.tracking_id,purchased_item.email)
+            print(sent_receipt)
             if sent_receipt == True:
                 purchased_item.email_sent = True
+                purchased_item.save()
         
             res_return = purchased_item.tracking_id
             return Response(res_return,201)
+
         except:
             res_return =purchased_item.tracking_id
+            print(res_return)
             return Response(res_return,202)
     
     elif not delivery_payment_status:
         res_return = 'we cound\'nt verify the Payment pls contact your us incase of anything'
+        
         return Response(res_return,400)
     
 
@@ -121,6 +138,35 @@ def trackingItem(request,tracking_id):
     
     return Response(tracking_response,200)
 
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def submitReview(request):
+    data = request.data
+    id = data['id']
+    rating = data['rating']
+    comment = data['review']
+    product_ = get_object_or_404(Product, id=id)
+    Review.objects.create(user=request.user,product=product_,rating=rating,comment=comment )
+
+    return Response(True,201)
+
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def userRate(request):
+    data = request.data
+    id = data['id']
+    user_id = request.user.id
+    product = get_object_or_404(Product, id=id)
+    serialzed_product = serializedProducts(product)
+    product_customers = serialzed_product.data['customer']
+    print(user_id,product_customers)
+    if user_id in product_customers:
+        print('youp')
+        return Response(True,200)
+    else:
+        print('nah')
+        return Response(False,200)
 
 #simple search functionality to get products of the store
 class ProductSearch(generics.ListAPIView):

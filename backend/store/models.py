@@ -3,7 +3,7 @@ from django.utils.text import slugify
 from django.db import models
 from django.urls import reverse
 
-from company.models import Collection
+from company.models import Collection, CustomUser
 from .paystack import Paystack
 
 import secrets
@@ -19,6 +19,7 @@ class Product(models.Model):
     price = models.BigIntegerField(default=0)
     quantity = models.IntegerField(default=0)
     image = models.ImageField(upload_to='product')
+    customer = models.ManyToManyField(CustomUser)
 
     def imageURL(self):
         try:
@@ -47,16 +48,18 @@ class ProductImages(models.Model):
     def __str__(self) -> str:
         return 'Image for '+str(self.product)
 
+
+RATING_OPTIONS=((1,1),(2,2),(3,3),(4,4),(5,5))
 class Review(models.Model):
-    user = models.CharField(max_length=200, null=True)
-    product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    rating = models.IntegerField(default=0)
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, null=True)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, null=True)
+    rating = models.IntegerField(choices=RATING_OPTIONS, default=5)
     comment = models.CharField(max_length=300)
     date = models.DateField(auto_now_add=True)
 
 
     def __str__(self) -> str:
-        return self.user+' on '+ self.product
+        return str(self.user)+' review on '+ str(self.product)
 
 class Order(models.Model):
     email = models.EmailField(max_length=30, null=True)
